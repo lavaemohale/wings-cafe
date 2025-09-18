@@ -38,7 +38,9 @@ export default function Sales() {
         quantity: qty,
         unitPrice: unitPrice || product.price,
       }),
-    }).then(() => {
+    })
+    fetch("https://wings-cafe-backend.onrender.com/api/products")
+    .then(() => {
       setQty(1);
       setUnitPrice(0);
       setProductName("");

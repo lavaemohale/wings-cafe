@@ -12,6 +12,7 @@ export default function Reports() {
   useEffect(() => {
     fetch("/api/report").then((r) => r.json()).then(setReport);
     fetch("/api/products").then((r) => r.json()).then(setProducts);
+    fetch("https://wings-cafe-backend.onrender.com/api/products")
   }, []);
 
   if (!report) {

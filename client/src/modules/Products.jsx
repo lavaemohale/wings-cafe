@@ -41,6 +41,7 @@ export default function Products() {
 
   function remove(id) {
     fetch("/api/products/" + id, { method: "DELETE" }).then(() => load());
+    fetch("https://wings-cafe-backend.onrender.com/api/products")
   }
 
   return (

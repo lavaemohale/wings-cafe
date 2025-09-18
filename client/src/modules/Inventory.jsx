@@ -4,6 +4,8 @@ export default function Inventory(){
   const [sel,setSel]=useState('');
   const [qty,setQty]=useState(0);
   const [price,setPrice]=useState(0);
+  const API_BASE = "https://wings-cafe-backend.onrender.com";
+
   function load(){ fetch('/api/products').then(r=>r.json()).then(setProducts); }
   useEffect(()=>load(),[]);
   function stockIn(){

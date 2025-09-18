@@ -8,6 +8,8 @@ const formatCurrency = (value) =>
 export default function Reports() {
   const [report, setReport] = useState(null);
   const [products, setProducts] = useState([]);
+  const API_BASE = "https://wings-cafe-backend.onrender.com";
+
 
   useEffect(() => {
     fetch("/api/report").then((r) => r.json()).then(setReport);

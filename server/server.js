@@ -4,12 +4,14 @@ const bodyParser = require("body-parser");
 const fs = require("fs");
 const path = require("path");
 
-const DATAFILE = path.join(__dirname, "data.json");
-
 const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
+const DATAFILE = path.join(__dirname, "data.json");
+const PORT = process.env.PORT || 4000;
+
+// --- Helpers ---
 function readData() {
   if (!fs.existsSync(DATAFILE)) {
     fs.writeFileSync(
@@ -24,6 +26,7 @@ function writeData(d) {
   fs.writeFileSync(DATAFILE, JSON.stringify(d, null, 2));
 }
 
+// --- API Endpoints ---
 app.get("/api/products", (req, res) => {
   const d = readData();
   res.json(d.products);
@@ -63,11 +66,9 @@ app.post("/api/transactions", (req, res) => {
     return res.status(400).send("Missing fields");
   }
 
-  type = type.toLowerCase(); 
-
+  type = type.toLowerCase();
   const d = readData();
   const prod = d.products.find((p) => p.id === productId);
-
   if (!prod) return res.status(404).send("Product not found");
 
   const q = Number(quantity);
@@ -83,7 +84,7 @@ app.post("/api/transactions", (req, res) => {
       productName: prod.name,
       quantity: q,
       unitPrice: price,
-      moneyFlow: -Math.abs(cost), 
+      moneyFlow: -Math.abs(cost),
       date: new Date().toISOString(),
     };
     d.transactions.push(t);
@@ -102,7 +103,7 @@ app.post("/api/transactions", (req, res) => {
       productName: prod.name,
       quantity: q,
       unitPrice: price,
-      moneyFlow: revenue, 
+      moneyFlow: revenue,
       date: new Date().toISOString(),
     };
     d.transactions.push(t);
@@ -136,9 +137,9 @@ app.get("/api/report", (req, res) => {
     totalMoneyOut,
     lowStock,
     products: d.products,
-    transactions: d.transactions, 
+    transactions: d.transactions,
   });
 });
 
-const PORT = process.env.PORT || 4000;
+// --- Start Server ---
 app.listen(PORT, () => console.log("✅ Server running on port", PORT));

@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 
 export default function Products() {
   const [products, setProducts] = useState([]);
+  const API_BASE = "https://wings-cafe-backend.onrender.com";
+
   const [form, setForm] = useState({
     name: "",
     description: "",

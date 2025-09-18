@@ -11,6 +11,8 @@ export default function Sales() {
   const [qty, setQty] = useState(1);
   const [unitPrice, setUnitPrice] = useState(0);
   const [transactions, setTransactions] = useState([]);
+  const API_BASE = "https://wings-cafe-backend.onrender.com";
+
 
   function load() {
     fetch("/api/products").then((r) => r.json()).then(setProducts);

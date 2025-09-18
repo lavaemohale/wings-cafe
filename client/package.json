@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "homepage": "https://lavaemohale.github.io/wings-cafe",
+  "homepage": "https://wings-cafe-2-rd5l.onrender.com",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

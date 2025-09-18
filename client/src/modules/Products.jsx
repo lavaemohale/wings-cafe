@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 export default function Products() {
   const [products, setProducts] = useState([]);
-  const API_BASE = "https://wings-cafe-backend.onrender.com";
+  const API_BASE = "https://wings-cafe-2-rd5l.onrender.com";
 
   const [form, setForm] = useState({
     name: "",
@@ -43,7 +43,7 @@ export default function Products() {
 
   function remove(id) {
     fetch("/api/products/" + id, { method: "DELETE" }).then(() => load());
-    fetch("https://wings-cafe-backend.onrender.com/api/products")
+    fetch("https://wings-cafe-2-rd5l.onrender.com/api/products")
   }
 
   return (

@@ -11,7 +11,7 @@ export default function Sales() {
   const [qty, setQty] = useState(1);
   const [unitPrice, setUnitPrice] = useState(0);
   const [transactions, setTransactions] = useState([]);
-  const API_BASE = "https://wings-cafe-backend.onrender.com";
+  const API_BASE = "https://wings-cafe-2-rd5l.onrender.com";
 
 
   function load() {
@@ -41,7 +41,7 @@ export default function Sales() {
         unitPrice: unitPrice || product.price,
       }),
     })
-    fetch("https://wings-cafe-backend.onrender.com/api/products")
+    fetch("https://wings-cafe-2-rd5l.onrender.com/api/products")
     .then(() => {
       setQty(1);
       setUnitPrice(0);

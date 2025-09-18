@@ -7,7 +7,7 @@ const formatCurrency = (value) =>
 
 export default function Dashboard() {
   const [report, setReport] = useState(null);
-  const API_BASE = "https://wings-cafe-backend.onrender.com";
+  const API_BASE = "https://wings-cafe-2-rd5l.onrender.com";
 
   useEffect(() => {
     fetch("/api/report")

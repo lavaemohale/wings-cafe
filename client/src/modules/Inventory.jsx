@@ -4,13 +4,13 @@ export default function Inventory(){
   const [sel,setSel]=useState('');
   const [qty,setQty]=useState(0);
   const [price,setPrice]=useState(0);
-  const API_BASE = "https://wings-cafe-backend.onrender.com";
+  const API_BASE = "https://wings-cafe-2-rd5l.onrender.com";
 
   function load(){ fetch('/api/products').then(r=>r.json()).then(setProducts); }
   useEffect(()=>load(),[]);
   function stockIn(){
     fetch('/api/transactions',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({type:'stock-in',productId:sel,quantity:qty,unitPrice:price})})
-    fetch("https://wings-cafe-backend.onrender.com/api/products")
+    fetch("https://wings-cafe-2-rd5l.onrender.com/api/products")
     .then(()=>{ setQty(0); setPrice(0); load(); });
   }
   return (
